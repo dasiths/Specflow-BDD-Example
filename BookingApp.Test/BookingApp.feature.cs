@@ -82,7 +82,7 @@ namespace BookingApp.Test
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
- testRunner.Given("The the customer has created a booking for two people", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("The the customer has created a booking for 2 people", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
  testRunner.When("they confirm", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9

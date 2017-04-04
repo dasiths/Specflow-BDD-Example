@@ -7,8 +7,8 @@ namespace BookingApp.Test
     [Binding]
     public class BookingAppSteps
     {
-        [Given(@"The the customer has created a booking for two people")]
-        public void GivenTheTheCustomerHasCreatedABookingForTwoPeople()
+        [Given(@"The the customer has created a booking for (.*) people")]
+        public void GivenTheTheCustomerHasCreatedABookingFor(int numOfPeople)
         {
             //ScenarioContext.Current.Pending();
         }

@@ -4,6 +4,6 @@
 
 @mytag
 Scenario: Make a booking for two people
-	Given The the customer has created a booking for two people
+	Given The the customer has created a booking for 2 people
 	When they confirm
 	Then the customer should get a confirmation email
