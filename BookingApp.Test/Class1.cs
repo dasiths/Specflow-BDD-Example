@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookingApp
+namespace BookingApp.Test
 {
     public class Class1
     {
