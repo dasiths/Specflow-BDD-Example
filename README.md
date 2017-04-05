@@ -4,7 +4,7 @@ Demonstrate BDD using specflow and .net
 -- Feature File --
 
 Feature: BookingApp
-		 In order to cehck the booking functionality
+		 In order to check the booking functionality
 		 We will create bookings
 
 @mytag
