@@ -33,7 +33,7 @@ namespace BookingApp.Test
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "BookingApp", "\tIn order to reserve a table\tfor 2 people\r\n\tI want to make a booking now", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "BookingApp", "\t\t In order to cehck the booking functionality\r\n\t\t We will create bookings", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -84,9 +84,134 @@ this.ScenarioSetup(scenarioInfo);
 #line 7
  testRunner.Given("The the customer has created a booking for 2 people", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
- testRunner.When("they confirm", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("they confirm with no credit card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
  testRunner.Then("the customer should get a confirmation email", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Make a booking for 1 person")]
+        [Xunit.TraitAttribute("FeatureTitle", "BookingApp")]
+        [Xunit.TraitAttribute("Description", "Make a booking for 1 person")]
+        [Xunit.TraitAttribute("Category", "mytag")]
+        public virtual void MakeABookingFor1Person()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Make a booking for 1 person", new string[] {
+                        "mytag"});
+#line 12
+this.ScenarioSetup(scenarioInfo);
+#line 13
+ testRunner.Given("The the customer has created a booking for 1 people", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 14
+ testRunner.Then("the customer should get a not enough people error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Make a booking outside work hours")]
+        [Xunit.TraitAttribute("FeatureTitle", "BookingApp")]
+        [Xunit.TraitAttribute("Description", "Make a booking outside work hours")]
+        [Xunit.TraitAttribute("Category", "mytag")]
+        public virtual void MakeABookingOutsideWorkHours()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Make a booking outside work hours", new string[] {
+                        "mytag"});
+#line 17
+this.ScenarioSetup(scenarioInfo);
+#line 18
+ testRunner.Given("The the customer has created a booking outside work hours", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 19
+ testRunner.Then("the customer should get an outside work hours error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Make a booking and confirm with credit card")]
+        [Xunit.TraitAttribute("FeatureTitle", "BookingApp")]
+        [Xunit.TraitAttribute("Description", "Make a booking and confirm with credit card")]
+        [Xunit.TraitAttribute("Category", "mytag")]
+        public virtual void MakeABookingAndConfirmWithCreditCard()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Make a booking and confirm with credit card", new string[] {
+                        "mytag"});
+#line 22
+this.ScenarioSetup(scenarioInfo);
+#line 23
+ testRunner.Given("The the customer has created a booking for 10 people", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 24
+ testRunner.When("they confirm with credit card of ABC", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 25
+ testRunner.Then("the customer should get a confirmation email", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Make a booking for ten people and confirm without credit card")]
+        [Xunit.TraitAttribute("FeatureTitle", "BookingApp")]
+        [Xunit.TraitAttribute("Description", "Make a booking for ten people and confirm without credit card")]
+        [Xunit.TraitAttribute("Category", "mytag")]
+        public virtual void MakeABookingForTenPeopleAndConfirmWithoutCreditCard()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Make a booking for ten people and confirm without credit card", new string[] {
+                        "mytag"});
+#line 28
+this.ScenarioSetup(scenarioInfo);
+#line 29
+ testRunner.Given("The the customer has created a booking for 10 people", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 30
+ testRunner.When("they confirm with no credit card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 31
+ testRunner.Then("the customer should get an no credit card error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Make a booking for ten people and confirm with credit card and then cancel")]
+        [Xunit.TraitAttribute("FeatureTitle", "BookingApp")]
+        [Xunit.TraitAttribute("Description", "Make a booking for ten people and confirm with credit card and then cancel")]
+        [Xunit.TraitAttribute("Category", "mytag")]
+        public virtual void MakeABookingForTenPeopleAndConfirmWithCreditCardAndThenCancel()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Make a booking for ten people and confirm with credit card and then cancel", new string[] {
+                        "mytag"});
+#line 34
+this.ScenarioSetup(scenarioInfo);
+#line 35
+ testRunner.Given("The the customer has created a booking for 10 people", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 36
+ testRunner.When("they confirm with credit card of ABC", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 37
+ testRunner.And("they cancel the booking", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 38
+ testRunner.Then("the customer should be charged 200 dollars", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Make a booking for ten people with dietary requirement and confirm with credit ca" +
+            "rd and then cancel")]
+        [Xunit.TraitAttribute("FeatureTitle", "BookingApp")]
+        [Xunit.TraitAttribute("Description", "Make a booking for ten people with dietary requirement and confirm with credit ca" +
+            "rd and then cancel")]
+        [Xunit.TraitAttribute("Category", "mytag")]
+        public virtual void MakeABookingForTenPeopleWithDietaryRequirementAndConfirmWithCreditCardAndThenCancel()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Make a booking for ten people with dietary requirement and confirm with credit ca" +
+                    "rd and then cancel", new string[] {
+                        "mytag"});
+#line 41
+this.ScenarioSetup(scenarioInfo);
+#line 42
+ testRunner.Given("The the customer has created a booking for 10 people", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 43
+ testRunner.And("The booking has dietary requirements", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 44
+ testRunner.When("they confirm with credit card of ABC", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 45
+ testRunner.And("they cancel the booking", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 46
+ testRunner.Then("the customer should be charged 225 dollars", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
