@@ -1,8 +1,16 @@
 # Specflow-BDD-Example
-Demonstrate BDD using specflow and .net
+Demonstrate BDD using SpecFlow, XUnit (SpecFlow.XUnit) and .NET Framework
 
--- Feature File --
+App.Config
+```xml
+  <specFlow>
+    <!-- For additional details on SpecFlow configuration options see http://go.specflow.org/doc-config -->
+    <unitTestProvider name="xUnit" />
+  </specFlow>
+```
 
+## Feature File
+```
 Feature: BookingApp
 		 In order to check the booking functionality
 		 We will create bookings
@@ -13,7 +21,11 @@ Scenario: Make a booking for two people
 	When they confirm with no credit card
 	Then the customer should get a confirmation email
   
--- Code example --
+```
+
+## Generated Stub + Testing Logic
+
+```csharp
 
         [Given(@"The the customer has created a booking for (.*) people")]
         public void GivenTheTheCustomerHasCreatedABookingFor(int numOfPeople)
@@ -48,3 +60,4 @@ Scenario: Make a booking for two people
         {
             Assert.True(tmpBooking.IsConfirmationEmailSent);
         }
+```
