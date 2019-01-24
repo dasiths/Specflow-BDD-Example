@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Web.Mvc;
 using BookingApp.Web.Models;
@@ -7,6 +8,8 @@ namespace BookingApp.Web.Controllers
 {
     public class BookingController : Controller
     {
+        private const string BookingKey = nameof(BookingKey);
+
         public ActionResult Index()
         {
             return View();
@@ -15,9 +18,17 @@ namespace BookingApp.Web.Controllers
         [HttpPost]
         public ActionResult Create(CreateBookingRequest request)
         {
-            Debug.WriteLine(string.Join(",", Request.Form.AllKeys));
+            var booking = new Booking(request.BookingDate.DateTime, request.BookingCount);
 
-            throw new NotImplementedException();
+            if (Session[BookingKey] == null)
+            {
+                Session[BookingKey] = new List<Booking>();
+            }
+
+            var bookings = Session[BookingKey] as List<Booking>;
+            bookings.Add(booking);
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
