@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Create Booking";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Create", "Booking", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label for="dateField">Date</label>
+                <input name="BookingDate" type="date" class="form-control" id="dateField" aria-describedby="dateHelp" placeholder="Enter date">
+                <small id="dateHelp" class="form-text text-muted">Please enter date in dd/mm/yyyy format</small>
+            </div>
+            <div class="form-group">
+                <label for="numberOfPeopleField">Number of people</label>
+                <input name="BookingCount" type="number" class="form-control" id="numberOfPeopleField" placeholder="Number of people attending">
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        }
+    </div>
+</div>
