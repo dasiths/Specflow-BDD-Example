@@ -2,7 +2,8 @@
 using TechTalk.SpecFlow;
 using Xunit;
 using BookingApp;
-using BookingApp.Exceptions;
+using BookingApp.Core;
+using BookingApp.Core.Exceptions;
 
 namespace BookingApp.Test
 {
