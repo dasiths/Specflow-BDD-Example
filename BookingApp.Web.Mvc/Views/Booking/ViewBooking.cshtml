@@ -1,0 +1,126 @@
+﻿@model BookingApp.Core.Booking
+
+<div>
+    <h4>Booking</h4>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @((ViewBag.Error as Exception).Message)
+        </div>
+    }
+
+    @if (ViewBag.Warning != null)
+    {
+        <div class="alert alert-warning" role="alert">
+            @ViewBag.Warning
+        </div>
+    }
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @ViewBag.Message
+        </div>
+    }
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BookingDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BookingDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumOfPeople)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumOfPeople)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DietaryRequirements)
+        </dt>
+        <dd>
+            @if (!Model.IsConfirmed && !Model.IsCancelled)
+            {
+                using (Html.BeginForm("DietaryRequirement", "Booking", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <input name="Requirement" type="text" class="form-control" id="RequirementField" aria-describedby="dietaryHelp" placeholder="No requirements" value="@Model.DietaryRequirements">
+                        <small id="dietaryHelp" class="form-text text-muted">Please enter any dietary requirement and click update</small>
+                    </div>
+                    <input type="hidden" name="BookingId" value="@Model.Id" />
+                    <button type="submit" class="btn btn-primary">Update Dietary Requirement</button>
+                }
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.DietaryRequirements)
+            }
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CancellationFee)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CancellationFee)
+            <br /><i>Fee charged if confirmed and then cancelled</i>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreditCardDetails)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreditCardDetails)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsConfirmed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsConfirmed)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsCancelled)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsCancelled)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsConfirmationEmailSent)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsConfirmationEmailSent)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsCancellationFeeCharged)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsCancellationFeeCharged)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (!Model.IsConfirmed && !Model.IsCancelled)
+    {
+        using (Html.BeginForm("Confirm", "Booking", FormMethod.Get))
+        {
+            <div class="form-group">
+                <input name="creditcard" type="text" class="form-control" id="CreditCardField" placeholder="No credit card" value="@Model.CreditCardDetails">
+            </div>
+            <input type="hidden" name="id" value="@Model.Id"/>
+            <button type="submit" class="btn btn-primary">Confirm Booking</button>
+        }
+        <span>|</span>
+    }
+
+    @if (!Model.IsCancelled) { 
+    @Html.ActionLink("Cancel Booking", "Cancel", new {id = Model.Id})
+        ;
+        <span>|</span>
+    }
+    <a asp-action="Index">Back to List</a>
+</div>

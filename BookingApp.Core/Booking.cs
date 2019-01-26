@@ -70,13 +70,13 @@ namespace BookingApp.Core
 
         public void ConfirmBooking(string creditcard)
         {
-
             //check to see if credit card details have been provided if there is a cancellation fee associated
             if (CancellationFee > 0 && string.IsNullOrEmpty(creditcard))
             {
                 throw new Exceptions.NoCreditCardProvidedException();
             }
 
+            CreditCardDetails = creditcard;
             IsConfirmationEmailSent = true;
             IsConfirmed = true;
             IsCancelled = false;
@@ -85,7 +85,10 @@ namespace BookingApp.Core
         public void CancelBooking()
         {
             //charge the credit card
-            IsCancellationFeeCharged = true;
+            if (IsConfirmed)
+            {
+                IsCancellationFeeCharged = true;
+            }
 
             IsConfirmed = false;
             IsCancelled = true;
