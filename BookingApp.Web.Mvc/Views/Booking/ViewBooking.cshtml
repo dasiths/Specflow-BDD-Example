@@ -29,19 +29,25 @@
             @Html.DisplayNameFor(model => model.Id)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Id)
+            <span id="@nameof(Model.Id)">
+                @Html.DisplayFor(model => model.Id)
+            </span>
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.BookingDate)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.BookingDate)
+            <span id="@nameof(Model.BookingDate)">
+                @Html.DisplayFor(model => model.BookingDate)
+            </span>
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.NumOfPeople)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.NumOfPeople)
+            <span id="@nameof(Model.NumOfPeople)">
+                @Html.DisplayFor(model => model.NumOfPeople)
+            </span>
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.DietaryRequirements)
@@ -68,38 +74,50 @@
             @Html.DisplayNameFor(model => model.CancellationFee)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.CancellationFee)
+            <span id="@nameof(Model.CancellationFee)">
+                @Html.DisplayFor(model => model.CancellationFee)
+            </span>
             <br /><i>Fee charged if confirmed and then cancelled</i>
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.CreditCardDetails)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.CreditCardDetails)
+            <span id="@nameof(Model.CreditCardDetails)">
+                @Html.DisplayFor(model => model.CreditCardDetails)
+            </span>
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.IsConfirmed)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.IsConfirmed)
+            <span id="@nameof(Model.IsConfirmed)">
+                @Html.DisplayFor(model => model.IsConfirmed)
+            </span>
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.IsCancelled)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.IsCancelled)
+            <span id="@nameof(Model.IsCancelled)">
+                @Html.DisplayFor(model => model.IsCancelled)
+            </span>
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.IsConfirmationEmailSent)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.IsConfirmationEmailSent)
+            <span id="@nameof(Model.IsConfirmationEmailSent)">
+                @Html.DisplayFor(model => model.IsConfirmationEmailSent)
+            </span>
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.IsCancellationFeeCharged)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.IsCancellationFeeCharged)
+            <span id="@nameof(Model.IsCancellationFeeCharged)">
+                @Html.DisplayFor(model => model.IsCancellationFeeCharged)
+            </span>
         </dd>
     </dl>
 </div>
@@ -111,14 +129,15 @@
             <div class="form-group">
                 <input name="creditcard" type="text" class="form-control" id="CreditCardField" placeholder="No credit card" value="@Model.CreditCardDetails">
             </div>
-            <input type="hidden" name="id" value="@Model.Id"/>
+            <input type="hidden" name="id" value="@Model.Id" />
             <button type="submit" class="btn btn-primary">Confirm Booking</button>
         }
         <span>|</span>
     }
 
-    @if (!Model.IsCancelled) { 
-    @Html.ActionLink("Cancel Booking", "Cancel", new {id = Model.Id})
+    @if (!Model.IsCancelled)
+    {
+        @Html.ActionLink("Cancel Booking", "Cancel", new { id = Model.Id })
         ;
         <span>|</span>
     }
