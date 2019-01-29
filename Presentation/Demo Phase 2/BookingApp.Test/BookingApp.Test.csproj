@@ -72,6 +72,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BookingApp.feature</DependentUpon>
     </Compile>
+    <Compile Include="BookingAppSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
